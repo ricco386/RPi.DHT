@@ -17,14 +17,12 @@ config.
 Sensor is based on `RPi.Sensor <https://github.com/ricco386/RPi.Sensor/>`_ library, which make base for implementing
 different types of sensors in Python.
 
-Installation
-------------
-
 There is an `Ansible role at galaxy <https://galaxy.ansible.com/ricco386/rpi-dht-ansible/>`_, which will do all the
-dependencies, config creation, and creates systemd service. Otherwise follow install instructions below:
+dependencies, config creation, and creates systemd service. Otherwise follow install instructions below...
+
 
 Pre-Installation requirements
-=============================
+-----------------------------
 
 - Update system and install required dependencies::
 
@@ -36,15 +34,11 @@ executing::
 
     sudo apt-get install build-essential python3-dev python3-pip
 
-RPi.DHT Installation
-====================
 
-- Install Adafruit_Python_DHT using pip (Unfortunately this library is deprecated, but I wasnt able to find better
-alternative in Python)::
+Installation
+------------
 
-    pip install https://github.com/adafruit/Adafruit_Python_DHT/tarball/master
-
-- Install RPi.DHT using pip (RPi.Sensor dependency will be installed automatically)::
+- Install the latest released version using pip::
 
     pip install https://github.com/ricco386/RPi.DHT/tarball/master/
 
@@ -52,14 +46,13 @@ alternative in Python)::
 
     pip install --upgrade RPi.DHT
 
-Run RPi.DHT as a systemd service
-================================
+
+Integration as a systemd service
+--------------------------------
 
 - Make sure all dependencies (listed below) are installed (done automatically when installing via pip)
-- The ``raspi-dht`` command should be installed somewhere in your ``PATH`` (done automatically when installing via pip),
-make sure `raspi-dht.service` has corect path in `ExecStart` set to `raspi-dht` executable.
-- Systemd scripts are available: https://github.com/ricco386/RPi.DHT/tree/master/init.d to install them you will need
-root privileges, so we execute them as sudo::
+- The ``raspi-dht`` command should be installed somewhere in your ``PATH`` (done automatically when installing via pip), make sure `raspi-dht.service` has corect path in `ExecStart` set to `raspi-dht` executable.
+- Systemd scripts are available: https://github.com/ricco386/RPi.DHT/tree/master/init.d to install them you will need root privileges, so we execute them as sudo::
 
     sudo cp init.d/raspi-dht.conf /etc/tmpfiles.d/
     sudo cp init.d/raspi-dht.service /etc/systemd/system/
@@ -73,6 +66,17 @@ Systemd scripts should be run under **default Raspberry Pi user** (pi), scripts 
 
 - `Adafruit_DHT <https://github.com/adafruit/Adafruit_Python_DHT>`_
 - `RPi.Sensor <https://github.com/ricco386/RPi.Sensor>`_ (0.5.3+)
+
+
+Usage
+-----
+
+You have to create a `.sensor.cfg` file and place into `/home/pi/.sensor.cfg` you can find example file in RPi.Sensor repo: https://github.com/ricco386/RPi.Sensor/blob/master/raspi_sensor/sensor.cfg.example and create section `[DHT]` where you can override default values.
+
+`raspi-dht` also support multiple parameters to overwrite config parameters. For more info run::
+
+    raspi-dht --help
+
 
 License
 -------
