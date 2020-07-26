@@ -8,7 +8,7 @@ class Dht(MqttSensor):
 
     SENSOR = Adafruit_DHT.DHT22
     NAME = 'DHT'
-    PIN = 21
+    PIN = 9
     SLEEP = 10
 
     temperature = None
