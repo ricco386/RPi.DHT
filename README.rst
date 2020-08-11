@@ -14,7 +14,7 @@ PIN and execute raspi-dht with parameter: ``raspi-dht --pin pin_number``.
 RPi.DHT supports number of parameters and also configuration file. For more details see ``raspi-dht --help`` or sample
 config.
 
-Sensor is based on `RPi.Sensor <https://github.com/ricco386/RPi.Sensor/>`_ library, which make base for implementing
+Sensor is based on `RPi.Sensor <https://github.com/ricco386/RPi.Sensor/>`__ library, which make base for implementing
 different types of sensors in Python.
 
 There is an `Ansible role at galaxy <https://galaxy.ansible.com/ricco386/rpi-dht-ansible/>`_, which will do all the
